@@ -1,12 +1,25 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, forwardRef } from "react";
 
-export  const  SelectOption = ( props : HTMLAttributes<HTMLSelectElement>) =>{
-  return(
-    <select {...props}>
-      <option className={'bg-slate-700'} value="وحشت/هیجانی" selected={true}>وحشت/هیجانی</option>
-      <option className={'bg-slate-700'} value="کمدی" selected={true}>کمدی</option>
-      <option className={'bg-slate-700'} value="اجتماعی" selected={true}>اجتماعی</option>
-      <option className={'bg-slate-700'} value="درام" selected={true}>درام</option>
+const SelectOption = (
+  props: HTMLAttributes<HTMLSelectElement>,
+  ref: React.LegacyRef<HTMLSelectElement>,
+) => {
+  return (
+    <select {...props} ref={ref}>
+      <option selected className={"bg-brown-home/70"} value="وحشت/هیجانی">
+        وحشت/هیجانی
+      </option>
+      <option className={"bg-brown-home/70"} value="کمدی">
+        کمدی
+      </option>
+      <option className={"bg-brown-home/70"} value="اجتماعی">
+        اجتماعی
+      </option>
+      <option className={"bg-brown-home/70"} value="درام">
+        درام
+      </option>
     </select>
-  )
-}
+  );
+};
+
+export default forwardRef(SelectOption);

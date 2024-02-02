@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Itodo } from "@/types/todo.ts";
+import { formValidation } from "@/libs/validations/form-validation";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:3000/data",
@@ -14,25 +15,25 @@ const baseApi: GetDataType<Itodo> = (url, option) => {
 };
 
 export const readData = async () => {
-  return await baseApi("" );
+  return await baseApi("");
 };
 
-export const createData = async (data : Itodo) => {
-  return await baseApi('' , {
-    method : 'POST' ,
-    data
-  })
+export const createData = async (data: formValidation) => {
+  return await baseApi("", {
+    method: "POST",
+    data,
+  });
 };
 
-export const updateData = async (data : Itodo , id : number) => {
-  return await baseApi(`/${id}` , {
-    method : 'PUT' ,
-    data
-  })
+export const updateData = async (data: Itodo, id: number) => {
+  return await baseApi(`/${id}`, {
+    method: "PUT",
+    data,
+  });
 };
 
-export const removeData = async (id : number) => {
- return  await baseApi(`/${id}` , {
-      method : 'DELETE' ,
-  })
-}
+export const removeData = async (id: number) => {
+  return await baseApi(`/${id}`, {
+    method: "DELETE",
+  });
+};

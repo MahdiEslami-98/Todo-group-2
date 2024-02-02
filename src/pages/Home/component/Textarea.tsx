@@ -1,7 +1,10 @@
-import React, { TextareaHTMLAttributes } from "react";
+import React, { TextareaHTMLAttributes, forwardRef } from "react";
 
-export const Textarea : React.FC<TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) =>{
-  return(
-    <textarea {...props}></textarea>
-  )
-}
+const Textarea = (
+  props: TextareaHTMLAttributes<HTMLTextAreaElement>,
+  ref: React.LegacyRef<HTMLTextAreaElement>,
+) => {
+  return <textarea {...props} ref={ref}></textarea>;
+};
+
+export default forwardRef(Textarea);
