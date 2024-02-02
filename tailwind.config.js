@@ -16,6 +16,9 @@ export default {
         red: {
           del_btn: "#F14D4D",
         },
+        brown : {
+          home : '#515050'
+        }
       },
     },
   },

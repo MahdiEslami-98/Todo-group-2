@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { Itodo } from "@/types/todo.ts";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:3000/data",
@@ -7,23 +8,31 @@ const axiosInstance = axios.create({
   },
 });
 
-type GetDataType = (url: string, options?: AxiosRequestConfig<T>) => Promise<T>;
-const baseApi: GetDataType = (url, option) => {
+type GetDataType<T> = (url: string, options?: AxiosRequestConfig) => Promise<T>;
+const baseApi: GetDataType<Itodo> = (url, option) => {
   return axiosInstance(url, { ...option });
 };
 
-const readData = () => {
-  return baseApi("");
+export const readData = async () => {
+  return await baseApi("" );
 };
 
-const createData = (second) => {
-  third;
+export const createData = async (data : Itodo) => {
+  return await baseApi('' , {
+    method : 'POST' ,
+    data
+  })
 };
 
-const updateData = (second) => {
-  third;
+export const updateData = async (data : Itodo , id : number) => {
+  return await baseApi(`/${id}` , {
+    method : 'PUT' ,
+    data
+  })
 };
 
-const removeData = (second) => {
-  third;
-};
+export const removeData = async (id : number) => {
+ return  await baseApi(`/${id}` , {
+      method : 'DELETE' ,
+  })
+}
